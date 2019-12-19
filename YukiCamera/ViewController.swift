@@ -13,8 +13,10 @@ class ViewController: UIViewController {
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-
+    var capturePhotoOutput: AVCapturePhotoOutput?
+    
     @IBOutlet weak var previewView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +35,49 @@ class ViewController: UIViewController {
         videoPreviewLayer?.frame = view.layer.bounds
         previewView.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
+        
+        // Get an instance of ACCapturePhotoOutput class
+        capturePhotoOutput = AVCapturePhotoOutput()
+        capturePhotoOutput?.isHighResolutionCaptureEnabled = true
+        // Set the output on the capture session
+        captureSession?.addOutput(capturePhotoOutput!)
     }
 
-
+    @IBAction func onTapTakePhoto(_ sender: Any) {
+        // Make sure capturePhotoOutput is valid
+        guard let capturePhotoOutput = self.capturePhotoOutput else { return }
+        // Get an instance of AVCapturePhotoSettings class
+        let photoSettings = AVCapturePhotoSettings()
+        // Set photo settings for our need
+        photoSettings.isAutoStillImageStabilizationEnabled = true
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.flashMode = .auto
+        // Call capturePhoto method by passing our photo settings and a
+        // delegate implementing AVCapturePhotoCaptureDelegate
+        capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
 }
 
+// MARK: - AVCapturePhotoCaptureDelegate
+extension ViewController: AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil else {
+            print("Error capturing photo: \(String(describing: error))")
+            return
+        }
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        // Initialise a UIImage with our image data
+        let capturedImage = UIImage.init(data: imageData , scale: 1.0)
+        if let image = capturedImage {
+        // Save our captured image to photos album
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            let alert = UIAlertController(title: "Saved a photo", message: nil, preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(confirm)
+            present(alert, animated: true)
+        }
+    }
+    
+}
