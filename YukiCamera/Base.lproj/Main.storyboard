@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -13,15 +13,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YukiCamera" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFm-Ie-lmM" userLabel="Preview View">
-                                <rect key="frame" x="0.0" y="20" width="375" height="537"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTV-Zg-7NP">
-                                <rect key="frame" x="80" y="617" width="215" height="30"/>
+                                <rect key="frame" x="80" y="728" width="215" height="30"/>
                                 <state key="normal" title="Take a photo"/>
                                 <connections>
                                     <action selector="onTapTakePhoto:" destination="BYZ-38-t0r" eventType="touchDown" id="7fr-Ma-1fz"/>
@@ -33,9 +33,9 @@
                             <constraint firstItem="LTV-Zg-7NP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="44v-Ew-OKF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LTV-Zg-7NP" secondAttribute="trailing" constant="80" id="BlJ-Pf-eh6"/>
                             <constraint firstItem="sFm-Ie-lmM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DfS-SB-KUY"/>
-                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="top" secondItem="sFm-Ie-lmM" secondAttribute="bottom" constant="60" id="FA3-rc-WX1"/>
+                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="top" secondItem="sFm-Ie-lmM" secondAttribute="bottom" constant="20" id="FA3-rc-WX1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LTV-Zg-7NP" secondAttribute="bottom" constant="20" id="Vtg-U1-zU7"/>
-                            <constraint firstItem="sFm-Ie-lmM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ZV7-Vp-bXo"/>
+                            <constraint firstItem="sFm-Ie-lmM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZV7-Vp-bXo"/>
                             <constraint firstItem="sFm-Ie-lmM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qU4-NX-A6x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+
         let captureDevice = AVCaptureDevice.default(for: .video)
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
@@ -32,7 +34,6 @@ class ViewController: UIViewController {
 
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPreviewLayer?.frame = view.layer.bounds
         previewView.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
         
@@ -41,6 +42,11 @@ class ViewController: UIViewController {
         capturePhotoOutput?.isHighResolutionCaptureEnabled = true
         // Set the output on the capture session
         captureSession?.addOutput(capturePhotoOutput!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        videoPreviewLayer?.frame.size = previewView.frame.size
     }
 
     @IBAction func onTapTakePhoto(_ sender: Any) {
@@ -56,6 +62,7 @@ class ViewController: UIViewController {
         // delegate implementing AVCapturePhotoCaptureDelegate
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
+    
     
 }
 
