@@ -15,13 +15,23 @@ class ViewController: UIViewController {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
     
+    // MARK: - UI
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var takePhotoButton: UIButton!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
+        self.setupCamera()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.setupUserInterface()
+    }
+    
+    // MARK: - Setup e.t.c.
+    private func setupCamera() {
         let captureDevice = AVCaptureDevice.default(for: .video)
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
@@ -29,7 +39,7 @@ class ViewController: UIViewController {
             captureSession?.addInput(input)
             
         } catch {
-          print(error)
+            print(error)
         }
 
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
@@ -44,11 +54,28 @@ class ViewController: UIViewController {
         captureSession?.addOutput(capturePhotoOutput!)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    private func setupUserInterface() {
         videoPreviewLayer?.frame.size = previewView.frame.size
+        applyRoundCorner(self.takePhotoButton)
     }
+    
+    func applyRoundCorner(_ object: UIButton) {
+        object.layer.cornerRadius = (object.frame.size.width)/2
+        object.layer.borderColor = UIColor.black.cgColor
+        object.layer.borderWidth = 5
+        object.layer.masksToBounds = true
 
+        let anotherFrame = CGRect(x: 12, y: 12, width: object.bounds.width - 24, height: object.bounds.height - 24)
+        let circle = CAShapeLayer()
+        let path = UIBezierPath(arcCenter: object.center, radius: anotherFrame.width / 2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+        circle.path = path.cgPath
+        circle.strokeColor = UIColor.black.cgColor
+        circle.lineWidth = 1.0
+        circle.fillColor = UIColor.clear.cgColor
+        object.layer.addSublayer(circle)
+    }
+    
+    // MARK: - Actions
     @IBAction func onTapTakePhoto(_ sender: Any) {
         // Make sure capturePhotoOutput is valid
         guard let capturePhotoOutput = self.capturePhotoOutput else { return }

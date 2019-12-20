@@ -17,31 +17,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFm-Ie-lmM" userLabel="Preview View">
-                                <rect key="frame" x="0.0" y="44" width="375" height="664"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="614"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTV-Zg-7NP">
-                                <rect key="frame" x="80" y="728" width="215" height="30"/>
-                                <state key="normal" title="Take a photo"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTV-Zg-7NP">
+                                <rect key="frame" x="147.66666666666666" y="678" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Rs8-2d-Pbe"/>
+                                    <constraint firstAttribute="height" constant="80" id="d77-ve-A7X"/>
+                                </constraints>
                                 <connections>
                                     <action selector="onTapTakePhoto:" destination="BYZ-38-t0r" eventType="touchDown" id="7fr-Ma-1fz"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="44v-Ew-OKF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LTV-Zg-7NP" secondAttribute="trailing" constant="80" id="BlJ-Pf-eh6"/>
+                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="top" secondItem="sFm-Ie-lmM" secondAttribute="bottom" constant="20" id="7mg-TY-hud"/>
                             <constraint firstItem="sFm-Ie-lmM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DfS-SB-KUY"/>
-                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="top" secondItem="sFm-Ie-lmM" secondAttribute="bottom" constant="20" id="FA3-rc-WX1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LTV-Zg-7NP" secondAttribute="bottom" constant="20" id="Vtg-U1-zU7"/>
+                            <constraint firstItem="LTV-Zg-7NP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IcG-dr-nkv"/>
                             <constraint firstItem="sFm-Ie-lmM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZV7-Vp-bXo"/>
                             <constraint firstItem="sFm-Ie-lmM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qU4-NX-A6x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LTV-Zg-7NP" secondAttribute="bottom" constant="20" id="qbe-Vd-SgX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="previewView" destination="sFm-Ie-lmM" id="7vb-hn-sOv"/>
+                        <outlet property="takePhotoButton" destination="LTV-Zg-7NP" id="aQR-Zc-XBC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

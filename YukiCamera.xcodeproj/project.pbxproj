@@ -37,6 +37,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010D2F9F23ACB8B90020F1BA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		01CB57E1239A3A0100356BE2 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +63,7 @@
 		01CB57EC239A3A0100356BE2 /* YukiCamera */ = {
 			isa = PBXGroup;
 			children = (
+				010D2F9F23ACB8B90020F1BA /* Sources */,
 				01CB57ED239A3A0100356BE2 /* AppDelegate.swift */,
 				01CB57F1239A3A0100356BE2 /* ViewController.swift */,
 				01CB57F3239A3A0100356BE2 /* Main.storyboard */,
