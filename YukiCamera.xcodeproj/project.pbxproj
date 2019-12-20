@@ -40,8 +40,37 @@
 		010D2F9F23ACB8B90020F1BA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				010D2FA223ACB9430020F1BA /* Views */,
+				010D2FA123ACB9360020F1BA /* ViewControllers */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		010D2FA023ACB9120020F1BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01F344C9239F866E006BD492 /* SceneDelegate.swift */,
+				01CB57ED239A3A0100356BE2 /* AppDelegate.swift */,
+				01CB57FB239A3A0300356BE2 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		010D2FA123ACB9360020F1BA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01CB57F1239A3A0100356BE2 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		010D2FA223ACB9430020F1BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01CB57F8239A3A0300356BE2 /* LaunchScreen.storyboard */,
+				01CB57F3239A3A0100356BE2 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		01CB57E1239A3A0100356BE2 = {
@@ -63,14 +92,9 @@
 		01CB57EC239A3A0100356BE2 /* YukiCamera */ = {
 			isa = PBXGroup;
 			children = (
+				010D2FA023ACB9120020F1BA /* Supporting Files */,
 				010D2F9F23ACB8B90020F1BA /* Sources */,
-				01CB57ED239A3A0100356BE2 /* AppDelegate.swift */,
-				01CB57F1239A3A0100356BE2 /* ViewController.swift */,
-				01CB57F3239A3A0100356BE2 /* Main.storyboard */,
 				01CB57F6239A3A0300356BE2 /* Assets.xcassets */,
-				01CB57F8239A3A0300356BE2 /* LaunchScreen.storyboard */,
-				01CB57FB239A3A0300356BE2 /* Info.plist */,
-				01F344C9239F866E006BD492 /* SceneDelegate.swift */,
 			);
 			path = YukiCamera;
 			sourceTree = "<group>";
