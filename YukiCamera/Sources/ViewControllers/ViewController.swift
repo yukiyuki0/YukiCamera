@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -37,7 +37,6 @@ class ViewController: UIViewController {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
             captureSession = AVCaptureSession()
             captureSession?.addInput(input)
-            
         } catch {
             print(error)
         }
@@ -56,23 +55,6 @@ class ViewController: UIViewController {
     
     private func setupUserInterface() {
         videoPreviewLayer?.frame.size = previewView.frame.size
-        applyRoundCorner(self.takePhotoButton)
-    }
-    
-    func applyRoundCorner(_ object: UIButton) {
-        object.layer.cornerRadius = (object.frame.size.width)/2
-        object.layer.borderColor = UIColor.black.cgColor
-        object.layer.borderWidth = 5
-        object.layer.masksToBounds = true
-
-        let anotherFrame = CGRect(x: 12, y: 12, width: object.bounds.width - 24, height: object.bounds.height - 24)
-        let circle = CAShapeLayer()
-        let path = UIBezierPath(arcCenter: object.center, radius: anotherFrame.width / 2, startAngle: 0, endAngle: .pi * 2, clockwise: true)
-        circle.path = path.cgPath
-        circle.strokeColor = UIColor.black.cgColor
-        circle.lineWidth = 1.0
-        circle.fillColor = UIColor.clear.cgColor
-        object.layer.addSublayer(circle)
     }
     
     // MARK: - Actions

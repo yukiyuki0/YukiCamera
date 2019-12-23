@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010D2FA423B0A3430020F1BA /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D2FA323B0A3430020F1BA /* RoundButton.swift */; };
 		01CB57EE239A3A0100356BE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB57ED239A3A0100356BE2 /* AppDelegate.swift */; };
 		01CB57F2239A3A0100356BE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB57F1239A3A0100356BE2 /* ViewController.swift */; };
 		01CB57F5239A3A0100356BE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CB57F3239A3A0100356BE2 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010D2FA323B0A3430020F1BA /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		01CB57EA239A3A0100356BE2 /* YukiCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YukiCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CB57ED239A3A0100356BE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01CB57F1239A3A0100356BE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				01CB57F8239A3A0300356BE2 /* LaunchScreen.storyboard */,
 				01CB57F3239A3A0100356BE2 /* Main.storyboard */,
+				010D2FA323B0A3430020F1BA /* RoundButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010D2FA423B0A3430020F1BA /* RoundButton.swift in Sources */,
 				01CB57F2239A3A0100356BE2 /* ViewController.swift in Sources */,
 				01CB57EE239A3A0100356BE2 /* AppDelegate.swift in Sources */,
 				01F344CA239F866E006BD492 /* SceneDelegate.swift in Sources */,
@@ -318,7 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3G4595GUAV;
-				INFOPLIST_FILE = YukiCamera/Info.plist;
+				INFOPLIST_FILE = "YukiCamera/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3G4595GUAV;
-				INFOPLIST_FILE = YukiCamera/Info.plist;
+				INFOPLIST_FILE = "YukiCamera/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
