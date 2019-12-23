@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 final class ViewController: UIViewController {
     
@@ -18,6 +19,7 @@ final class ViewController: UIViewController {
     // MARK: - UI
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var recentImageView: UIImageView!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -53,8 +55,40 @@ final class ViewController: UIViewController {
         captureSession?.addOutput(capturePhotoOutput!)
     }
     
+    private func setupAlbum() {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+
+        let last = fetchResult.lastObject
+
+        if let lastAsset = last {
+          let options = PHImageRequestOptions()
+          options.version = .current
+
+          PHImageManager.default().requestImage(
+            for: lastAsset,
+            targetSize: self.recentImageView.bounds.size,
+            contentMode: .aspectFit,
+            options: options,
+            resultHandler: { image, _ in
+              DispatchQueue.main.async {
+                self.recentImageView.image = image
+              }
+            }
+          )
+        }
+    }
+    
     private func setupUserInterface() {
+        // Set up preview layer
         videoPreviewLayer?.frame.size = previewView.frame.size
+        
+        // Set up album
+        self.setupAlbum()
+        self.recentImageView.layer.borderWidth = 1
+        self.recentImageView.layer.borderColor = UIColor.green.cgColor
     }
     
     // MARK: - Actions
@@ -87,7 +121,7 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
         // Initialise a UIImage with our image data
         let capturedImage = UIImage.init(data: imageData , scale: 1.0)
         if let image = capturedImage {
-        // Save our captured image to photos album
+            // Save our captured image to photos album
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             let alert = UIAlertController(title: "Saved a photo", message: nil, preferredStyle: .alert)
             let confirm = UIAlertAction(title: "OK", style: .default, handler: nil)
