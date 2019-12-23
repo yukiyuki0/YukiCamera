@@ -25,6 +25,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCamera()
+        self.setupObserver()
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,12 +82,15 @@ final class ViewController: UIViewController {
         }
     }
     
+    private func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
     private func setupUserInterface() {
         // Set up preview layer
         videoPreviewLayer?.frame.size = previewView.frame.size
         
         // Set up album
-        self.setupAlbum()
         self.recentImageView.layer.borderWidth = 1
         self.recentImageView.layer.borderColor = UIColor.green.cgColor
     }
@@ -106,6 +110,9 @@ final class ViewController: UIViewController {
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
     
+    @objc func applicationDidBecomeActive(notification: NSNotification) {
+        self.setupAlbum()
+    }
     
 }
 
@@ -124,7 +131,7 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
             // Save our captured image to photos album
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             let alert = UIAlertController(title: "Saved a photo", message: nil, preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let confirm = UIAlertAction(title: "OK", style: .default, handler: { _ in  self.setupAlbum() })
             alert.addAction(confirm)
             present(alert, animated: true)
         }
